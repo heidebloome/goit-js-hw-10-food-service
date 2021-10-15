@@ -1,11 +1,11 @@
-import menu from '../menu.json';
+import menuList from '../menu.json';
 import menuTemplate from '../template.hbs';
 
-const menus = document.querySelector('.js-menu');
+const menuEl = document.querySelector('.js-menu');
 
-const cardMarkUp = createMenuTemplate(menu);
-menus.insertAdjacentHTML('beforeend', cardMarkUp);
+const createMenuTemplate = menu => {
+  return menu.map(menuTemplate).join('');
+};
+const cardMarkUp = createMenuTemplate(menuList);
 
-function createMenuTemplate(array) {
-  return array.map(menuTemplate).join('');
-}
+menuEl.insertAdjacentHTML('beforeend', cardMarkUp);
